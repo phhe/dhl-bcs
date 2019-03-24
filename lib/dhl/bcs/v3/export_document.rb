@@ -45,7 +45,7 @@ module Dhl::Bcs::V3
       h['additionalFee'] = additional_fee if additional_fee
       h['permitNumber'] = permit_number if permit_number
       h['attestationNumber'] = attestation_number if attestation_number
-      h['WithElectronicExportNtfctn/'] = {'@active': 1} if with_electronic_export_notification
+      h['WithElectronicExportNtfctn/'] = {'@active' => 1} if with_electronic_export_notification
       h['ExportDocPosition'] = self.export_doc_positions.map { |e| e.to_soap_hash }
       h
     end
