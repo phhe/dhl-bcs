@@ -16,6 +16,23 @@ require 'dhl/bcs/v2/service'
 require 'dhl/bcs/v2/locator'
 require 'dhl/bcs/v2/export_document'
 
+# imports for API V3
+require 'dhl/bcs/v3/client'
+require 'dhl/bcs/v3/buildable'
+require 'dhl/bcs/v3/shipment'
+require 'dhl/bcs/v3/shipper'
+require 'dhl/bcs/v3/receiver'
+require 'dhl/bcs/v3/communication'
+require 'dhl/bcs/v3/location'
+require 'dhl/bcs/v3/address'
+require 'dhl/bcs/v3/packstation'
+require 'dhl/bcs/v3/parcel_shop'
+require 'dhl/bcs/v3/postfiliale'
+require 'dhl/bcs/v3/bank_data'
+require 'dhl/bcs/v3/service'
+require 'dhl/bcs/v3/locator'
+require 'dhl/bcs/v3/export_document'
+
 module Dhl
   module Bcs
 
@@ -39,5 +56,15 @@ module Dhl
       V2::Service.new(*args)
     end
 
+    def self.client_v3(config, options = {})
+      V3::Client.new(config, options)
+    end
+
+    def self.build_shipment_v3(*args)
+      V3::Shipment.build(*args)
+    end
+
   end
+
+
 end
