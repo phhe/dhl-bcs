@@ -60,7 +60,7 @@ module Dhl::Bcs::V3
     def create_shipment_order(*shipments, **options)
       request(:create_shipment_order, build_shipment_orders(shipments, options)) do |response|
         [response.body[:create_shipment_order_response][:creation_state]].flatten.map do |creation_state|
-          creation_state[:label_data]
+            {:shipment_number => creation_state[:shipment_number]}.merge(creation_state[:label_data])
         end
       end
     end
