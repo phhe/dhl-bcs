@@ -102,7 +102,7 @@ module Dhl::Bcs::V3
 
     protected
 
-    def build_shipment_orders(shipments, label_response_type: 'URL', print_only_if_codeable: false)
+    def build_shipment_orders(shipments, label_response_type: 'URL', print_only_if_codeable: false, combined_printing: false)
       raise Dhl::Bcs::DataError, 'No more than 30 shipments allowed per request!' if shipments.size > 30
       {
         'ShipmentOrder' =>
@@ -113,6 +113,8 @@ module Dhl::Bcs::V3
               'LabelResponseType' => label_response_type.to_s.upcase,
             }
             h['PrintOnlyIfCodeable/'] = {'@active' => 1} if print_only_if_codeable
+            h['combinedPrinting'] = combined_printing 
+
             h
           end
       }
